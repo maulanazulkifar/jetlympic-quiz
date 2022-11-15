@@ -14,7 +14,7 @@ const HomePage = (props) => {
         <HomePageHeader/>
       </div>
       <div>
-        <button onClick={() => onclickMulaiQuiz()}>Mulai Quiz</button>
+        <button id={'breathing-button'} onClick={() => onclickMulaiQuiz()}>Mulai Quiz</button>
       </div>
       <div>&copy; System & Software</div>
     </div>
