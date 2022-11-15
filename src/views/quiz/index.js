@@ -1,6 +1,8 @@
 const Quiz = (props) => {
   return(
-    <div>INI QUIZ</div>
+    <div className={'container'} style={{justifyContent: 'center'}}>
+      <h1>Under Construction</h1>
+    </div>
   )
 }
 
