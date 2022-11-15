@@ -16,7 +16,7 @@ const HomePage = (props) => {
       <div>
         <button id={'breathing-button'} onClick={() => onclickMulaiQuiz()}>Mulai Quiz</button>
       </div>
-      <div>&copy; System & Software</div>
+      <div style={{fontSize: 12}}>&copy; System & Software</div>
     </div>
   )
 }
