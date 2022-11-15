@@ -1,0 +1,15 @@
+.answer-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.question-text {
+    font-size: 6vw;
+    font-weight: bold;
+    margin-bottom: 5vh;
+}
+.image-question {
+    height: 30vh;
+    width: 30vh;
+}

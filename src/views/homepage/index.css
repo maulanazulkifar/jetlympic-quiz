@@ -6,6 +6,26 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.footer {
+    padding-bottom: 1em;
+}
+
+.flag-group {
+    margin-top: 1vh;
+    display: flex;
+    gap: 20px ;
+}
+
+.active {
+    background-color: #282c34;
+}
+
+.flag {
+    width: 70px;
+    height: 50px;
+}
+
 #breathing-button {
     width: 180px;
     padding: 12px;
