@@ -1,0 +1,13 @@
+.card {
+    width: 40vw;
+    height: 40vw;
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    font-size: 1.5em;
+}
+
+.card:active {
+    background-color: red;
+    box-shadow: 10px 5px 5px;
+}

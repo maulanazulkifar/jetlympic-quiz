@@ -1,14 +1,20 @@
 import './App.css';
+import {HashRouter, Route, Routes} from "react-router-dom";
+import HomePage from "./views/homepage";
+import Quiz from "./views/quiz";
+import Result from "./views/result";
 
 function App() {
   return (
     <div className="App">
-      {/*Header*/}
-      <h1>Jetlympic Quiz</h1>
-
-      <h2>Current Score: 2</h2>
-
-
+        {/*<HomePage></HomePage>*/}
+        <HashRouter>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="quiz" element={<Quiz />} />
+            <Route path="result" element={<Result />} />
+          </Routes>
+        </HashRouter>
     </div>
   );
 }
