@@ -2,10 +2,24 @@ import React, {useEffect, useState} from "react";
 import "./index.css"
 import Answercard from "../../components/quiz/answercard";
 import {useLocation, useNavigate} from "react-router-dom";
-import get from "../../services/api";
+import service  from "../../services/api";
 import Loading from "../../components/loading";
+import axios from "axios";
 
 const Quiz = (props) => {
+    const [ip, setIP] = useState('');
+    //creating function to load ip address from the API
+    const getData = async () => {
+        const res = await axios.get('https://geolocation-db.com/json/')
+        setIP(res.data.IPv4)
+    }
+
+    useEffect( () => {
+        //passing getData method to the lifecycle method
+        getData()
+    }, [])
+
+
     const { state } = useLocation();
     const [isLoading, setIsLoading] = useState(false)
     const [question, setQuestion] = useState([{question:{text: ''},options:[]}])
@@ -26,7 +40,7 @@ const Quiz = (props) => {
     useEffect( () => {
         setIsLoading(true)
         //passing getData method to the lifecycle method
-        get(`jetlimpic/quiz/${state}`).then(res => {
+        service.get(`jetlimpic/quiz/${state}`).then(res => {
             setQuestion(res.data)
             setTotalQuestion(res.data.length)
             setIsLoading(false);
@@ -37,19 +51,26 @@ const Quiz = (props) => {
     const navigate = useNavigate();
     const checkAnswer = async (isAnswer) => {
         if (isAnswer) {
-            let tempScore = score + 10;
+            let tempScore = score + 1;
             setScore(tempScore);
             return tempScore
         }
     }
-    const onClickAnswer = (isAnswer) => {
+
+    const [quizAnswer, setQuizAnswer] = useState([])
+    const onClickAnswer = (isAnswer, id) => {
+        let dataAnswer = [{
+            "question_id" : question[index - 1].question.id,
+            "answer_id" : id
+        }];
+        setQuizAnswer(quizAnswer.concat(dataAnswer))
         setIsLoading(true)
         setTimeout(function(){
             checkAnswer(isAnswer).then((tempScore) => {
                 if (index<totalQuestion) {
                     setIndex(index + 1);
                 } else {
-                    navigate('/result', {state: {score: tempScore?tempScore:score}})
+                    navigate('/result', {state: {score: tempScore?tempScore:score, ip: ip, language: state, quiz: quizAnswer}})
                 }
             })
             setIsLoading(false)
@@ -60,7 +81,7 @@ const Quiz = (props) => {
         {
             isLoading ? <Loading></Loading>: ''
         }
-      <div style={{marginTop: 100}}>{getQuestionText()} {index}/{totalQuestion}</div>
+      <div style={{marginTop: 50}}>{getQuestionText()} {index}/{totalQuestion}</div>
       <div style={{flexGrow: 2}}>
           <div className={'question-text'}>{question.length>0 ? question[index-1].question.text : ''}</div>
           {
@@ -71,7 +92,7 @@ const Quiz = (props) => {
                   question[index - 1].options.map(o => {
                       return (
                         <div key={o.id}>
-                            <Answercard answer={o.text} onClick={() => onClickAnswer(o.is_answer)}/>
+                            <Answercard answer={o.text} onClick={() => onClickAnswer(o.is_answer, o.id)}/>
                         </div>
                       )
                   })

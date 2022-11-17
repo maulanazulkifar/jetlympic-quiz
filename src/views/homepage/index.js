@@ -6,30 +6,34 @@ import { useNavigate } from "react-router-dom";
 const HomePage = (props) => {
   const navigate = useNavigate();
   const [idLanguage, setIdLanguage] = useState('en')
+    const [greeting, setGreeting] = useState('Hi, Sand’s people, let’s see how much you know about Sands! ')
   const [language, setLanguage] = useState('Select a Language')
-  const [start, setStart] = useState('Start Quiz')
+  const [start, setStart] = useState('Let’s start')
   const [flag, setFlag] = useState(
       [
           {
               id: 'en',
               link: 'uk-flag.jpg',
               isActive: true,
+              select_greeting: 'Hi, Sand’s people, let’s see how much you know about Sands! ',
               select_language: 'Select a Language',
-              start: 'Start Quiz'
+              start: 'Let’s start'
           },
           {
               id: 'id',
               link: 'indo-flag.png',
               isActive: false,
+              select_greeting: 'Halo rekan-rekan SANDS, Yuk! Uji seberapa baik kamu mengenal SANDS!',
               select_language: 'Pilih Bahasa',
-              start: 'Mulai Kuis'
+              start: 'Mulai Menjawab'
           },
           {
               id: 'cn',
               link: 'ch-flag.png',
               isActive: false,
+              select_greeting: '你好沙滩人，来测试一下你对沙滩的了解有多深吧！',
               select_language: '选择一种语言',
-              start: '开始测验'
+              start: '开始答题'
           }
       ]
   )
@@ -46,7 +50,8 @@ const HomePage = (props) => {
           if (f.id === id) {
               setIdLanguage(f.id);
               setLanguage(f.select_language);
-              setStart(f.start)
+              setStart(f.start);
+              setGreeting(f.select_greeting);
               f.isActive = true;
           }
       })
@@ -58,6 +63,7 @@ const HomePage = (props) => {
               <div>
                   <HomePageHeader/>
               </div>
+              <div>{greeting}</div>
               <div>
                   <div>
                       <div style={{marginBottom: 20}}>{language}</div>
