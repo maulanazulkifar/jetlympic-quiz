@@ -63,7 +63,7 @@ const HomePage = (props) => {
               <div>
                   <HomePageHeader/>
               </div>
-              <div>{greeting}</div>
+              <div style={{padding: 10}}>{greeting}</div>
               <div>
                   <div>
                       <div style={{marginBottom: 20}}>{language}</div>

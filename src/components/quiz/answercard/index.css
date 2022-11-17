@@ -4,7 +4,9 @@
     background-color: white;
     padding: 20px;
     margin: 10px;
-    font-size: 1em;
+    font-size: 0.7em;
+    font-family: 'Press Start 2P';
+    word-wrap: break-word;
 }
 
 .card:active {
