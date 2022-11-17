@@ -1,6 +1,21 @@
+@media (min-width: 760px) and  (max-width: 1020px){
+    .container {
+        height: 100%;
+    }
+}
+@media (min-width: 1020px){
+    .container {
+        height: 100vh;
+    }
+}
+@media (max-width: 760px){
+    .container {
+        height: 100vh;
+    }
+}
+
 .container {
     background-color: lightblue;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

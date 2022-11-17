@@ -1,0 +1,9 @@
+.mobile-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+.text-alert {
+    font-size: 3em;
+}
