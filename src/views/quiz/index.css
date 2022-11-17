@@ -5,11 +5,14 @@
 }
 
 .question-text {
-    font-size: 6vw;
+    font-size: 4vw;
     font-weight: bold;
     margin-bottom: 5vh;
+    padding: 0.5em;
+    word-wrap: break-word;
+    width: 90vw;
 }
 .image-question {
-    height: 20vh;
-    width: 30vh;
+    height: 25vh;
+    width: 40vh;
 }

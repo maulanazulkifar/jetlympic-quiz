@@ -81,7 +81,7 @@ const Quiz = (props) => {
         {
             isLoading ? <Loading></Loading>: ''
         }
-      <div style={{marginTop: 50}}>{getQuestionText()} {index}/{totalQuestion}</div>
+      <div style={{marginTop: 30, padding: 20}}>{getQuestionText()} {index}/{totalQuestion}</div>
       <div style={{flexGrow: 2}}>
           <div className={'question-text'}>{question.length>0 ? question[index-1].question.text : ''}</div>
           {
@@ -99,7 +99,7 @@ const Quiz = (props) => {
               }
           </div>
       </div>
-        <div style={{fontSize: 12}}>&copy; System & Software</div>
+        <div style={{fontSize: 12, padding:10}}>&copy; System & Software</div>
     </div>
   )
 }
