@@ -1,15 +1,50 @@
 .card {
     width: 40vw;
     height: 40vw;
-    background-color: white;
+    color: white;
+    font-weight: bolder;
+    background-image: linear-gradient(to right, orange , orangered);
+    padding: 20px;
+    margin: 10px;
+    font-size: 1em;
+    word-wrap: break-word;
+    border: solid 5px orange;
+    border-radius: 10px;
+}
+
+.card-true {
+    width: 40vw;
+    height: 40vw;
     padding: 20px;
     margin: 10px;
     font-size: 0.7em;
-    font-family: 'Press Start 2P';
     word-wrap: break-word;
 }
 
-.card:active {
+.card-false {
+    width: 40vw;
+    height: 40vw;
+    padding: 20px;
+    margin: 10px;
+    font-size: 0.7em;
+    word-wrap: break-word;
+}
+
+
+.card-true:active {
+    background-color: lawngreen;
+    box-shadow: 10px 5px 5px;
+}
+.card-false:active {
     background-color: red;
     box-shadow: 10px 5px 5px;
+}
+.logo {
+    position: absolute;
+    padding-left: 1.5em;
+}
+
+.container-answer {
+    display: flex;
+    align-items: center;
 }

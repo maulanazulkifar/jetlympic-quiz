@@ -64,7 +64,6 @@ const Quiz = (props) => {
             "answer_id" : id
         }];
         setQuizAnswer(quizAnswer.concat(dataAnswer))
-        setIsLoading(true)
         setTimeout(function(){
             checkAnswer(isAnswer).then((tempScore) => {
                 if (index<totalQuestion) {
@@ -73,33 +72,37 @@ const Quiz = (props) => {
                     navigate('/result', {state: {score: tempScore?tempScore:score, ip: ip, language: state, quiz: quizAnswer}})
                 }
             })
-            setIsLoading(false)
         }, 500);
     }
   return(
-    <div className={'container'} style={{justifyContent: 'space-between'}}>
+    <div className={'container'} style={{justifyContent: 'space-between', backgroundColor: "white"}}>
         {
             isLoading ? <Loading></Loading>: ''
         }
-      <div style={{marginTop: 30, padding: 20}}>{getQuestionText()} {index}/{totalQuestion}</div>
-      <div style={{flexGrow: 2}}>
-          <div className={'question-text'}>{question.length>0 ? question[index-1].question.text : ''}</div>
-          {
-              question[index-1].question.image ? <img className={'image-question'} src={question[index-1].question.image} alt=""/> : ''
-          }
-          <div className={'answer-wrap'}>
+        <div style={{height: "fit-content"}}>
+            <img style={{width: 75}} src={'logo.png'} alt={'logo jetlympic'}/>
+        </div>
+      <div style={{backgroundColor: 'aliceblue', margin: 10, paddingBottom: 10, height: "fit-content", borderRadius: 16}}>
+          <div style={{marginTop: 10, padding: 20}}>{getQuestionText()} {index}/{totalQuestion}</div>
+          <div style={{flexGrow: 2}}>
+              <div className={'question-text'}>{question.length>0 ? question[index-1].question.text : ''}</div>
               {
-                  question[index - 1].options.map(o => {
-                      return (
-                        <div key={o.id}>
-                            <Answercard answer={o.text} onClick={() => onClickAnswer(o.is_answer, o.id)}/>
-                        </div>
-                      )
-                  })
+                  question[index-1].question.image ? <img className={'image-question'} src={question[index-1].question.image} alt=""/> : ''
               }
+              <div className={'answer-wrap'}>
+                  {
+                      question[index - 1].options.map(o => {
+                          return (
+                            <div key={o.id}>
+                                <Answercard isTrue={o.is_answer} answer={o.text} onClick={() => onClickAnswer(o.is_answer, o.id)}/>
+                            </div>
+                          )
+                      })
+                  }
+              </div>
           </div>
       </div>
-        <div style={{fontSize: 12, padding:10}}>&copy; System & Software</div>
+        <div style={{fontSize: 12}}>&copy; System & Software</div>
     </div>
   )
 }
