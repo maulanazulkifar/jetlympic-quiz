@@ -1,3 +1,9 @@
 .logo {
-    max-width: 70vw;
+    max-width: 20vw;
+}
+.container-logo {
+    display: flex;
+    width: 100vw;
+    justify-content: flex-end;
+    background-color: #282c34;
 }

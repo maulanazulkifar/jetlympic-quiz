@@ -1,4 +1,16 @@
 .result-text {
-    font-size: 2em;
+    font-size: 1em;
     padding: 10px;
+
+}
+
+.score-text {
+    font-size: 1.5em;
+    padding: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+.desc-text {
+    font-size: 1em;
 }

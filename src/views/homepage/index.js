@@ -63,24 +63,26 @@ const HomePage = (props) => {
               <div>
                   <HomePageHeader/>
               </div>
-              <div style={{padding: 10}}>{greeting}</div>
+            <div>
+              <div className={'greeting-text'} style={{padding: 10}}>{greeting}</div>
               <div>
-                  <div>
-                      <div style={{marginBottom: 20}}>{language}</div>
-                      <div className={'flag-group'}>
-                          {
-                              flag.map(f => {
-                                  return (
-                                      <div key={f.id} className={f.isActive?'active':''} style={{padding: 10}} onClick={() => selectLanguage(f.id)}>
-                                          <img className={'flag'} src={`./assets/${f.link}`} alt={'bendera'}/>
-                                      </div>
-                                  )
-                              })
-                          }
-                      </div>
+                <div>
+                  <div className={'language-text'} style={{marginBottom: 20}}>{language}</div>
+                  <div className={'flag-group'}>
+                    {
+                      flag.map(f => {
+                        return (
+                          <div key={f.id} className={f.isActive?'active':''} style={{padding: 10}} onClick={() => selectLanguage(f.id)}>
+                            <img className={'flag'} src={`./assets/${f.link}`} alt={'bendera'}/>
+                          </div>
+                        )
+                      })
+                    }
                   </div>
-                  <button id={'breathing-button'} onClick={() => onclickMulaiQuiz()}>{start}</button>
+                </div>
+                <button id={'breathing-button'} onClick={() => onclickMulaiQuiz()}>{start}</button>
               </div>
+            </div>
               <div className={'footer'} style={{fontSize: 12}}>&copy; System & Software</div>
           </div>
       </div>

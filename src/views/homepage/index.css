@@ -1,21 +1,10 @@
-@media (min-width: 760px) and  (max-width: 1020px){
-    .container {
-        height: 100%;
-    }
-}
-@media (min-width: 1020px){
-    .container {
-        height: 100vh;
-    }
-}
-@media (max-width: 760px){
-    .container {
-        height: 100vh;
-    }
+.container {
+    height: 100vh;
+    overflow: scroll;
 }
 
 .container {
-    background-color: lightblue;
+    background-image: url('https://cdn.oppomobile.id/assets/jetlympic-quiz/background.jpg');
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,6 +19,7 @@
     margin-top: 1vh;
     display: flex;
     gap: 20px ;
+    justify-content: center;
 }
 
 .active {
@@ -45,11 +35,11 @@
     width: 180px;
     padding: 12px;
     margin: 50px auto;
-    border: 1px solid #3cc8b4;
+    border: 2px solid orangered;
     -webkit-animation: breathing 3s ease-out infinite normal;
     animation: breathing 3s ease-out infinite normal;
     font-size: 16px;
-    background: #3cc8b4;
+    background-image: linear-gradient(to right, orange , orangered);
     color: #fff;
     -webkit-font-smoothing: antialiased;
     border-radius: 2px;
@@ -107,4 +97,16 @@
         -ms-transform: scale(0.9);
         transform: scale(0.9);
     }
+}
+
+.greeting-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px orangered;
+    color: white;
+}
+
+.language-text {
+    text-shadow: 3px 3px 3px orangered;
+    color: white;
 }
