@@ -49,6 +49,7 @@ const Quiz = (props) => {
     }, [])
 
     const navigate = useNavigate();
+    console.log(navigate());
     const checkAnswer = async (isAnswer) => {
         if (isAnswer) {
             let tempScore = score + 1;
