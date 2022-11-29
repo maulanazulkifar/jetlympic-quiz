@@ -1,6 +1,7 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import "./index.css"
+import service from "../../services/api";
 
 const ResultPage = (props) => {
   const { state } = useLocation();
@@ -11,9 +12,9 @@ const ResultPage = (props) => {
             score: state.score,
             quiz: state.quiz
         }
-        // service.post(`jetlimpic/quiz/${state.language}`, dataAnswer).then(res => {
-        //     console.log(res)
-        // })
+        service.post(`jetlimpic/quiz/${state.language}`, dataAnswer).then(res => {
+            console.log(res)
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -35,7 +36,7 @@ const ResultPage = (props) => {
                 )
             } else if (state.language === 'en') {
                 return (
-                  <div>Congratulation, you get
+                  <div>Congratulations, you get
                     <div className={'score-text'}>
                       <span style={{color: "red"}}>{state.score}</span>
                       <div style={{color: "red"}}>point</div>
@@ -75,7 +76,7 @@ const ResultPage = (props) => {
                 )
             } else if (state.language === 'en') {
                 return (
-                    <div>Congratulation, you get
+                    <div>Congratulations, you get
                         <div style={{fontWeight: 'bold'}} className={'score-text'}>
                             <span style={{color: "red"}}>{state.score}</span>
                             <div style={{color: "red"}}>point</div>

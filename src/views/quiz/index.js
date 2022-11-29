@@ -5,11 +5,14 @@ import {useLocation, useNavigate} from "react-router-dom";
 import service  from "../../services/api";
 import Loading from "../../components/loading";
 import axios from "axios";
+import MobileDetect from 'mobile-detect';
 
 const Quiz = (props) => {
     const [ip, setIP] = useState('');
     //creating function to load ip address from the API
     const getData = async () => {
+        let md = new MobileDetect(window.navigator.userAgent);
+        console.log(md.mobile())
         const res = await axios.get('https://geolocation-db.com/json/')
         setIP(res.data.IPv4)
     }
@@ -49,7 +52,6 @@ const Quiz = (props) => {
     }, [])
 
     const navigate = useNavigate();
-    console.log(navigate());
     const checkAnswer = async (isAnswer) => {
         if (isAnswer) {
             let tempScore = score + 1;
@@ -59,17 +61,26 @@ const Quiz = (props) => {
     }
 
     const [quizAnswer, setQuizAnswer] = useState([])
+    const [firstAnswer, setFirstAnswer] = useState([])
     const onClickAnswer = (isAnswer, id) => {
         let dataAnswer = [{
             "question_id" : question[index - 1].question.id,
             "answer_id" : id
         }];
         setQuizAnswer(quizAnswer.concat(dataAnswer))
+        if (quizAnswer.length === 0) {
+            setFirstAnswer(dataAnswer);
+        }
+        console.log(dataAnswer);
+        console.log(quizAnswer);
         setTimeout(function(){
             checkAnswer(isAnswer).then((tempScore) => {
                 if (index<totalQuestion) {
                     setIndex(index + 1);
                 } else {
+                    //handle ketika jawaban pertama tidak masuk ke list jawban
+                    setQuizAnswer(quizAnswer.unshift(firstAnswer[0]));
+                    // console.log(quizAnswer)
                     navigate('/result', {state: {score: tempScore?tempScore:score, ip: ip, language: state, quiz: quizAnswer}})
                 }
             })

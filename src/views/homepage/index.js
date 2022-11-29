@@ -2,11 +2,12 @@ import React, {useState} from 'react'
 import './index.css'
 import HomePageHeader from "../../components/homepage/homepageheader";
 import { useNavigate } from "react-router-dom";
+import Select from 'react-select'
 
 const HomePage = (props) => {
   const navigate = useNavigate();
   const [idLanguage, setIdLanguage] = useState('en')
-    const [greeting, setGreeting] = useState('Hi, Sand’s people, let’s see how much you know about Sands! ')
+    const [greeting, setGreeting] = useState('Hi, Sands\'er, let’s see how much you know about Sands! ')
   const [language, setLanguage] = useState('Select a Language')
   const [start, setStart] = useState('Let’s start')
   const [flag, setFlag] = useState(
@@ -15,9 +16,10 @@ const HomePage = (props) => {
               id: 'en',
               link: 'uk-flag.jpg',
               isActive: true,
-              select_greeting: 'Hi, Sand’s people, let’s see how much you know about Sands! ',
+              select_greeting: 'Hi, Sands\'er, let’s see how much you know about Sands! ',
               select_language: 'Select a Language',
-              start: 'Let’s start'
+              start: 'Let’s start',
+              label: 'English'
           },
           {
               id: 'id',
@@ -25,7 +27,8 @@ const HomePage = (props) => {
               isActive: false,
               select_greeting: 'Halo rekan-rekan SANDS, Yuk! Uji seberapa baik kamu mengenal SANDS!',
               select_language: 'Pilih Bahasa',
-              start: 'Mulai Menjawab'
+              start: 'Mulai Menjawab',
+              label: 'Bahasa'
           },
           {
               id: 'cn',
@@ -33,7 +36,8 @@ const HomePage = (props) => {
               isActive: false,
               select_greeting: '你好沙滩人，来测试一下你对沙滩的了解有多深吧！',
               select_language: '选择一种语言',
-              start: '开始答题'
+              start: '开始答题',
+              label: '中文 ',
           }
       ]
   )
@@ -41,11 +45,6 @@ const HomePage = (props) => {
     navigate('/quiz', {state: idLanguage})
   }
   const selectLanguage = (id) => {
-      flag.forEach(f => {
-          if (f.isActive) {
-              f.isActive = false;
-          }
-      })
       flag.forEach(f => {
           if (f.id === id) {
               setIdLanguage(f.id);
@@ -67,18 +66,21 @@ const HomePage = (props) => {
               <div className={'greeting-text'} style={{padding: 10}}>{greeting}</div>
               <div>
                 <div>
-                  <div className={'language-text'} style={{marginBottom: 20}}>{language}</div>
-                  <div className={'flag-group'}>
-                    {
-                      flag.map(f => {
-                        return (
-                          <div key={f.id} className={f.isActive?'active':''} style={{padding: 10}} onClick={() => selectLanguage(f.id)}>
-                            <img className={'flag'} src={`./assets/${f.link}`} alt={'bendera'}/>
-                          </div>
-                        )
-                      })
-                    }
+                  <div className={'language-text'} style={{marginBottom: 10, marginTop: 20}}>{language}</div>
+                  <div style={{paddingLeft: 20, paddingRight: 20}}>
+                    <Select isSearchable={false} defaultValue={{value: 'en', label: 'English'}} onChange={(flag) => selectLanguage(flag.id)} options={flag}></Select>
                   </div>
+                  {/*<div className={'flag-group'}>*/}
+                  {/*  {*/}
+                  {/*    flag.map(f => {*/}
+                  {/*      return (*/}
+                  {/*        <div key={f.id} className={f.isActive?'active':''} style={{padding: 10}} onClick={() => selectLanguage(f.id)}>*/}
+                  {/*          <img className={'flag'} src={`./assets/${f.link}`} alt={'bendera'}/>*/}
+                  {/*        </div>*/}
+                  {/*      )*/}
+                  {/*    })*/}
+                  {/*  }*/}
+                  {/*</div>*/}
                 </div>
                 <button id={'breathing-button'} onClick={() => onclickMulaiQuiz()}>{start}</button>
               </div>

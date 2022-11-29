@@ -1,5 +1,7 @@
 import "./index.css"
 import {useState} from "react";
+import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const AnswerCard = (props) => {
 
@@ -19,11 +21,11 @@ const AnswerCard = (props) => {
       <div className={'container-answer'}>
           <div className={'logo'}>
               {
-                  isTrue ? <span className="material-symbols-outlined" style={{color: "green", fontSize: 150}}>check_circle</span> :
+                  isTrue ? <CheckCircleOutlineOutlinedIcon className="material-symbols-outlined" style={{color: "green", fontSize: 150}}/> :
                     ''
               }
               {
-                  isFalse ? <span className="material-symbols-outlined" style={{color: "red", fontSize: 150}}>cancel</span> :
+                  isFalse ? <CancelOutlinedIcon className="material-symbols-outlined" style={{color: "red", fontSize: 150}}/> :
                       ''
               }
           </div>
