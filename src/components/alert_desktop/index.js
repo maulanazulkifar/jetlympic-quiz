@@ -11,6 +11,8 @@ const AlertDesktop = (props) => {
             </div>
             <div>
                 <div className={'text-alert'}>This Web App can only be accessed on mobile devices</div>
+                {/*<div className={'text-alert'}>Aplikasi Web ini hanya dapat diakses di perangkat seluler</div>*/}
+                {/*<div className={'text-alert'}>此 Web App 只能在移动设备上访问</div>*/}
             </div>
             <div>
                 <div style={{fontSize: 16, padding: 10}}>&copy; System & Software</div>
